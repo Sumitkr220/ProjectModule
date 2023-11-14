@@ -1,4 +1,4 @@
-package Registration.Request;
+package com.example.Registration.model;
 
 import jakarta.persistence.*;
 import lombok.Builder;
