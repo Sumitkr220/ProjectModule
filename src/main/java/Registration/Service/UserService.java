@@ -3,18 +3,18 @@ package Registration.Service;
 import Registration.Repo.UserRepository;
 import Registration.Request.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
     private final UserRepository userRepository;
-    private final BCryptPasswordEncoder passwordEncoder;
+//    private final BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserService(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
+//        this.passwordEncoder = passwordEncoder;
     }
 
     public void saveUser(Long id,String userId, String password,String state,String country,
@@ -27,7 +27,8 @@ public class UserService {
                 .firstName(firstName)
                 .lastName(lastName)
                 .authId(authId)
-                .passwordHash(passwordEncoder.encode(password))
+//                .passwordHash(passwordEncoder.encode(password))
+                .passwordHash(password)
                 .build();
         userRepository.save(userDTO);
     }
